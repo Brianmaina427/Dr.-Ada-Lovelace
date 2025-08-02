@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ada Lovelace | Pioneer in Computer Science</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === Base Styles === */
+        :root {
+            --primary: #6a0dad;
+            --primary-dark: #4b0082;
+            --secondary: #ff8c00;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --text: #333;
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Crimson Text', serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === Typography === */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* === Header & Navigation === */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* === Hero Section === */
+        .hero {
+            background: linear-gradient(rgba(106, 13, 173, 0.9), rgba(106, 13, 173, 0.9)), 
+                        url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--gold);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        /* === About Section === */
+        .about {
+            padding: 8rem 5%;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .section-title p {
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 4rem;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--gold);
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-top: 2rem;
+        }
+
+        /* === Achievements Section === */
+        .achievements {
+            padding: 8rem 5%;
+            background-color: #f5f5f5;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 50%;
+            padding: 0 40px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--gold);
+            border: 3px solid white;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--gold);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* === Publications Section === */
+        .publications {
+            padding: 8rem 5%;
+            background-color: white;
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .publication-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .publication-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .publication-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .publication-card:hover .publication-image img {
+            transform: scale(1.1);
+        }
+
+        .publication-content {
+            padding: 1.5rem;
+        }
+
+        .publication-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-content p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .publication-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        /* === Contact Section === */
+        .contact {
+            padding: 8rem 5%;
+            background-color: #f5f5f5;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-text p {
+            color: var(--text);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* === Footer === */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links li {
+            margin: 0 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* === Responsive Styles === */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                display: block;
+                margin: 0.5rem auto;
+                max-width: 200px;
+            }
+        }
+
+        /* === Animations === */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Ada <span>Lovelace</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Dr. Ada Lovelace</h1>
+            <h2>The First Computer Programmer</h2>
+            <p>Pioneer in mathematical computing and visionary of the computer age</p>
+            <div class="hero-btns">
+                <a href="#achievements" class="btn">Explore Achievements</a>
+                <a href="#publications" class="btn btn-outline">Read Publications</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>About Dr. Lovelace</h2>
+            <p>The visionary mathematician who saw the potential of computing machines a century before their invention</p>
+        </div>
+        <div class="about-container">
+            <div class="about-image floating">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/800px-Ada_Lovelace_portrait.jpg" alt="Dr. Ada Lovelace">
+            </div>
+            <div class="about-content">
+                <h3>The Enchantress of Numbers</h3>
+                <p>Augusta Ada King, Countess of Lovelace (1815-1852) was an English mathematician and writer, chiefly known for her work on Charles Babbage's proposed mechanical general-purpose computer, the Analytical Engine.</p>
+                <p>She was the first to recognize that the machine had applications beyond pure calculation, and published the first algorithm intended to be carried out by such a machine. As a result, she is often regarded as the first computer programmer.</p>
+                <p>Lovelace's notes on the Analytical Engine include what is now considered the first computer program—an algorithm designed to be processed by a machine. Her visionary insights into computing went far beyond Babbage's own ideas about number crunching.</p>
+                <div class="signature">Ada Lovelace</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="section-title">
+            <h2>Key Achievements</h2>
+            <p>Groundbreaking contributions that shaped the future of computing</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">1833</span>
+                    <h3>Met Charles Babbage</h3>
+                    <p>Began her collaboration with Charles Babbage, the inventor of the Difference Engine and Analytical Engine, which would define her legacy.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">1842-1843</span>
+                    <h3>Translated Menabrea's Paper</h3>
+                    <p>Translated Luigi Menabrea's article on Babbage's Analytical Engine from French to English, adding her own extensive notes that were three times longer than the original article.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">1843</span>
+                    <h3>First Computer Program</h3>
+                    <p>Published the first algorithm intended to be processed by a machine - a method for calculating Bernoulli numbers using the Analytical Engine.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">1843</span>
+                    <h3>Vision of Computer Capabilities</h3>
+                    <p>Envisioned computers going beyond number-crunching to manipulate symbols and create music or art, a revolutionary concept at the time.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Posthumous</span>
+                    <h3>Recognition & Legacy</h3>
+                    <p>In the 20th century, her work was rediscovered and she became celebrated as a pioneer of computer science. The Ada programming language is named in her honor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="publications" id="publications">
+        <div class="section-title">
+            <h2>Notable Publications</h2>
+            <p>Groundbreaking writings that laid the foundation for modern computing</p>
+        </div>
+        <div class="publications-grid">
+            <div class="publication-card">
+                <div class="publication-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Sketch_of_The_Analytical_Engine.jpg/800px-Sketch_of_The_Analytical_Engine.jpg" alt="Analytical Engine Notes">
+                </div>
+                <div class="publication-content">
+                    <h3>Notes on the Analytical Engine</h3>
+                    <p>Lovelace's extensive notes that accompanied her translation of Menabrea's article, containing what is now considered the first computer program.</p>
+                    <div class="publication-meta">
+                        <span>1843</span>
+                        <span>Note G</span>
+                    </div>
+                </div>
+            </div>
+            <div class="publication-card">
+                <div class="publication-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Diagram_for_the_computation_of_Bernoulli_numbers.jpg/800px-Diagram_for_the_computation_of_Bernoulli_numbers.jpg" alt="Bernoulli Numbers Diagram">
+                </div>
+                <div class="publication-content">
+                    <h3>Algorithm for Bernoulli Numbers</h3>
+                    <p>The first published computer program - a method for calculating Bernoulli numbers using the Analytical Engine.</p>
+                    <div class="publication-meta">
+                        <span>1843</span>
+                        <span>Note G</span>
+                    </div>
+                </div>
+            </div>
+            <div class="publication-card">
+                <div class="publication-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Ada_Lovelace_letter_to_Michael_Faraday_1841.jpg/800px-Ada_Lovelace_letter_to_Michael_Faraday_1841.jpg" alt="Scientific Correspondence">
+                </div>
+                <div class="publication-content">
+                    <h3>Scientific Correspondence</h3>
+                    <p>Letters exchanged with Charles Babbage, Michael Faraday, and other scientists revealing her deep insights into mathematics and computing.</p>
+                    <div class="publication-meta">
+                        <span>1838-1852</span>
+                        <span>Letters</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Contact</h2>
+            <p>For inquiries about Dr. Lovelace's work and legacy</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Ada Lovelace Institute</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-text">
+                        <h4>Address</h4>
+                        <p>12 Computing Way, London, UK</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>info@adalovelaceinstitute.org</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>+44 20 7946 0958</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Ada <span>Lovelace</span></div>
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p class="copyright">© 2023 Ada Lovelace Legacy Project. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
